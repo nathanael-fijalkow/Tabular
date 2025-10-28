@@ -57,7 +57,7 @@ def run_extraction_on_instance(instance_id: int, provider: str = "gemini", model
         return
     
     # Get image path
-    image_path = Path("data") / "img" / f"{instance_id}.png"
+    image_path = Path("data") / "images" / f"{instance_id}.png"
     if not image_path.exists():
         print(f"Error: Image not found at {image_path}")
         return

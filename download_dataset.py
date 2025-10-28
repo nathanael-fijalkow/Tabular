@@ -21,7 +21,7 @@ def download_ocr_benchmark(output_dir: str = "data"):
     """
     # Create directories
     base_path = Path(output_dir)
-    img_path = base_path / "img"
+    img_path = base_path / "images"
     img_path.mkdir(parents=True, exist_ok=True)
     
     print("Loading dataset from Hugging Face...")
