@@ -36,6 +36,7 @@ class LLM:
             raise RuntimeError("HF_API_KEY not set")
         client = InferenceClient(
             model=model_name,
+            token=self.settings.hf_api_key
         )
         messages = []    
         # Add the system prompt first, if provided
@@ -44,6 +45,9 @@ class LLM:
     
         # Add the user prompt
         messages.append({"role": "user", "content": prompt})
-        response = client.chat(messages=messages)
-
-        return response.content.strip()
+        
+                # Use chat_completion instead of chat
+        response = client.chat_completion(messages=messages)
+        
+        content = response.choices[0].message.content
+        return content.strip() if content else ""
